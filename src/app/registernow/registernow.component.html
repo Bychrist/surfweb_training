@@ -1,0 +1,229 @@
+<section class="u-clearfix u-palette-2-base u-section-1"
+  id="carousel_3d5c">
+  <div class="u-clearfix u-sheet u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+    <div
+      class="u-expanded-width-sm u-expanded-width-xs u-opacity u-opacity-55 u-shape u-shape-svg u-text-palette-2-light-1 u-shape-1">
+      <svg class="u-svg-link"
+        preserveAspectRatio="none"
+        viewBox="0 0 160 160"
+        style="">
+        <use xlink:href="#svg-2739"></use>
+      </svg>
+      <svg class="u-svg-content"
+        viewBox="0 0 160 160"
+        x="0px"
+        y="0px"
+        id="svg-2739"
+        style="enable-background:new 0 0 160 160;">
+        <path
+          d="M151.7,132.5c-3.4,6-7.9,11.7-13.3,16.5c-29.2,26.1-54.1-2.3-88.2-3S0,109.5,0,91.6s14.8-31.3,25.3-45.3S33.4,11,51.8,3
+                     c15.3-6.6,33.6-0.4,51.6,0.7c11.2,0.7,28.8-3.8,38.2,0.4s11.8,15.4,9.2,22.8c-1.9,5.4-5.5,11.6-12.8,16.5
+                     c-9.3,10.1-4.7,22.9,3.7,33.4c7.8,9.7,17.7,11.7,18.3,23.5C160.4,110.8,157.6,122.2,151.7,132.5L151.7,132.5z">
+        </path>
+      </svg>
+    </div>
+    <div class="u-clearfix u-gutter-0 u-layout-wrap u-layout-wrap-1">
+      <div class="u-gutter-0 u-layout">
+       <app-header></app-header>
+        <div class="loadme u-layout-row">
+
+          <div class="u-size-22 u-size-60-md">
+            <div class="u-layout-col">
+              <div class="u-align-left u-container-style u-layout-cell u-size-60 u-white u-layout-cell-1">
+                <div
+                  class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
+
+
+                    <form *ngIf="!showPayment"  #profileForm="ngForm" (ngSubmit)="accountCreate(profileForm)"  novalidate="novalidate" >
+                        <h3 style="text-align: center;">Register Here</h3>
+                        <p style="text-align: center;color:red"><span>{{errormessage}}</span></p>
+                        <p style="text-align: center;color:rgb(1, 171, 38)"><span>{{success}}</span></p>
+
+                      <div class="form-group formy">
+
+                        <label for="">Firsname</label>
+                        <input type="text"
+                          name="firstName"
+                          required="required"
+                          ngModel
+                          #firstName="ngModel" [(ngModel)] ="profileObj.firstName"
+                          placeholder="enter firstname"
+                          class="form-control">
+                        <span *ngIf="firstName.errors?.required && firstName.touched">
+                          <small class="text-danger">Firstname can not be blank <br> </small>
+                        </span>
+                      </div>
+                        <div class="form-group formy">
+                          <label for="">Lastname</label>
+                          <input type="text"
+                            name="lastName"
+                            ngModel
+                            #lastName="ngModel" [(ngModel)] ="profileObj.lastName"
+                            required="required"
+                            placeholder="enter lastname"
+                            class="form-control">
+                          <span *ngIf="lastName.errors?.required && lastName.touched">
+                            <small class="text-danger">Lastname can not be blank <br> </small>
+                          </span>
+                        </div>
+                      <div class="form-group formy">
+                        <label for="">Email</label>
+                        <input type="email"
+                          required="required"
+                          ngModel
+                          name="email"
+                          #email="ngModel"
+                          placeholder="enter email" [(ngModel)] ="profileObj.email"
+                          class="form-control"
+                          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                        <span *ngIf="email.errors?.required && email.touched">
+                          <small class="text-danger">email can not be blank <br> </small>
+                        </span>
+                        <span *ngIf="email.errors?.pattern && email.touched">
+                          <small class="text-danger">Email must be valid email input <br> </small>
+                        </span>
+                      </div>
+                      <div class="form-group formy">
+                        <label for="">Phone Number</label>
+                        <input type="text"
+                          required="required"
+                          ngModel
+                          #phoneNumber="ngModel" [(ngModel)] ="profileObj.phoneNumber"
+                          pattern="^[0-9]*$"
+                          name="phoneNumber"
+                          minlength="8"
+                          maxlength="11"
+                          placeholder="enter phone number"
+                          class="form-control">
+                        <span *ngIf="phoneNumber.errors?.required && phoneNumber.touched">
+                          <small class="text-danger">phoneNumber can not be blank <br> </small>
+                        </span>
+                        <span *ngIf="phoneNumber.errors?.pattern && phoneNumber.touched">
+                          <small class="text-danger">phoneNumber can only be numeral <br> </small>
+                        </span>
+                        <span *ngIf="phoneNumber.errors?.minlength && phoneNumber.touched">
+                          <small class="text-danger">phoneNumber can not be less than 8 character long <br> </small>
+                        </span>
+                        <span *ngIf="phoneNumber.errors?.maxlength && phoneNumber.touched">
+                          <small class="text-danger">phoneNumber can not be more than 11 character long <br> </small>
+                        </span>
+
+                      </div>
+                          <div class="form-group formy">
+                            <label for="Country">Country</label>
+                            <select name="Country"
+                              ngModel
+                              #Country="ngModel"
+                              [(ngModel)]="profileObj.country"
+                              class="form-control"
+                              required>
+                              <option value="">~ Select country ~</option>
+                              <option *ngFor="let country of countries"
+                                value="{{country.name}}">{{country.name}}</option>
+                            </select>
+                            <span *ngIf="Country.errors && Country.touched">
+                              <small class="text-danger">Country can not be blank <br> </small>
+                            </span>
+                          </div>
+
+                      <div class="form-group formy">
+                        <label for="JobRole">Current Job Role</label>
+                        <textarea  name="JobRole" #JobRole="ngModel" [(ngModel)] ="profileObj.jobRole"
+                          class="form-control" ngModel required="required" style="height: 100px;resize: none;"
+                          placeholder="enter current job role" rows="5" maxlength="300">
+
+                        </textarea>
+                          <span *ngIf="JobRole.errors && JobRole.touched">
+                            <small class="text-danger">job role can not be blank <br> </small>
+                          </span>
+                      </div>
+
+                      <div  class="form-group formy">
+                          <button  [class.disabled]="!profileForm.valid"  class="centerme btn btn-primary u-active-palette-3-base u-border-1 u-border-palette-3-base u-btn u-button-style u-hover-palette-3-base u-none u-text-active-white u-text-hover-white u-text-palette-3-base u-btn-">
+                              {{Register}}
+                          </button>
+                      </div>
+                    </form>
+
+                    <!-- // ==================== paypaystack form -->
+
+               <div *ngIf="showPayment">
+                  <h5 style="text-align: center;">
+                    Thank you for registering. You can make payment to book
+                    your space for the training, if not you can <a style="color:red;font-weight:bolder" routerLink="/home">return</a>
+                  </h5>
+                    <button
+                   class="btn btn-primary pay"
+                     angular4-paystack
+                     [paystackOptions]= "options"
+                      (paymentInit)="paymentInit()"
+                      (onClose)="paymentCancel()"
+                      (callback)="paymentDone($event)">
+                       Online payment with master card  | visa card
+                    </button>
+                 </div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-size-38 u-size-60-md">
+            <div class="u-layout-col">
+              <div class="u-align-left u-container-style u-layout-cell u-size-60 u-white u-layout-cell-1">
+                <div
+                  class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
+
+
+                  <h2 style="text-align: center;">Schedule Of Training</h2>
+                  <p class="p_justify u-text u-text-2">
+                    <strong>Two Saturdays in May.</strong> <br>
+                    May 7th and 14th, 2022  <br><br>
+
+                    <strong>Time</strong>  <br>
+                    10am Nigeria <br>
+                    9am Ghana <br>
+                    12noon Kenya <br>
+                    9am South Africa <br><br>
+
+                    <strong>Cost</strong> <br>
+                     =N=150,000 <br>
+
+                    If you pay before 30th of April, you get 20% off. <br><br>
+
+
+                    <strong>Venue Zoom</strong> <br>
+                    Online Payment or
+
+                    You can pay to: <br>
+
+                   <strong> Surfweb Digital Solutions Limited
+                    Stanbic IBTC Bank
+                    0035394931 </strong>
+                  </p>
+
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+              <div class="u-layout-row" style="background-color: white;padding:30px" >
+                    <div class="u-size-30">
+                      <a routerLink="home"
+                        class="centerme u-active-palette-3-base u-border-1 u-border-palette-3-base u-btn u-button-style u-hover-palette-3-base u-none u-text-active-white u-text-hover-white u-text-palette-3-base u-btn-2">Go
+                        Back
+                      </a>
+                    </div>
+
+                  </div>
+      </div>
+    </div>
+  </div>
+</section>

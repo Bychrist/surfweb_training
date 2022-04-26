@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+.centerme
+{
+  font-size: 15px !important;
+  padding:5px 10px 5px 10px !important;
+  border-radius: 50px !important;
+}
+
+.cat{
+background-image: url("../src/assets/images/off.png");
+background-position: 50% 50%;
+background-size: contain;
+background-repeat: no-repeat;
+
+}
+
+
+
+.pay {
+  border-radius: 20px !important;
+  margin-top:50%;
+  margin-left:20%;
+
+}
+
+.overflowme{
+  max-height: 100px;
+  overflow: scroll;
+}
+.cert{
+  height: 100px !important;
+  width:100px !important;
+}
+
+.profilepix{
+  height: 250px !important;
+  width:250px !important;
+  margin-left:8% I !important
+}
+
+.listinline
+{
+  list-style: none;
+  float:left !important;
+
+}
+
+    .loadme {
+      animation: fadeInAnimation ease 2s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeInAnimation {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+
+@media (max-width: 500px)
+{
+   .hbutton{
+     margin-left:30% !important;
+   }
+}
