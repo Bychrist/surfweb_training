@@ -35,7 +35,7 @@ export class RegisternowComponent implements OnInit {
   options: PaystackOptions = {
     amount:15000000 ,
     email: '',
-    key:'pk_test_15cc7eb938c75614fd2490b056eeaeb11a8208be',
+    key:'public key goes here',
     ref: '',
   }
   ref:any;
